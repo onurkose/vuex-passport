@@ -39,14 +39,14 @@ export default store;
 </code></pre>
 <h2 id="route-interceptor">Route interceptor</h2>
 <p>if you need intercept guarded routes you can import a RouteShielding, eg.:</p>
-<pre><code> import Vue from 'vue' import VueRouter from 'vue-router'
+<pre><code> import Vue from 'vue'
+ import VueRouter from 'vue-router'
  import { RouteShielding } from 'vuex-passport'
  import routes from './routes'
  Vue.use(VueRouter);
  const Router = new VueRouter({ routes });
  const authLoginRedirect = 'oauth/token', // used when user try to access a guarded route
      authDashboardRedirect = 'dashboard'; // used when user try to access authLoginRedirect route
-     
  Router.beforeEach(RouteShielding(authLoginRedirect, authDashboardRedirect));
  export default Router;
 </code></pre>
