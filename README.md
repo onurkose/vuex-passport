@@ -2,6 +2,8 @@
 
 For simple use import this module and use in store/index.js
 
+Enhancements with vuex-persistedstate and so on.
+
 ```
   import Vue from 'vue'
   import Vuex from 'vuex'
