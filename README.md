@@ -41,18 +41,16 @@
 </code></pre>
 <h2 id="route-interceptor">Route interceptor</h2>
 <p>if you need intercept guarded routes you can import a RouteShielding, eg.:</p>
-<pre><code> import Vue from 'vue' import VueRouter from 'vue-router' import { RouteShielding } from 'vuex-passport'
+<pre><code> import Vue from 'vue' import VueRouter from 'vue-router'
+ import { RouteShielding } from 'vuex-passport'
  import routes from './routes'
-
  Vue.use(VueRouter);
- 
- const Router = new VueRouter({ routes });  
- 
+ const Router = new VueRouter({ routes });
  const authLoginRedirect = 'oauth/token', // used when user try to access a guarded route
-	 authDashboardRedirect = 'dashboard'; // used when user try to access authLoginRedirect route
-
- Router.beforeEach(RouteShielding(authLoginRedirect, authDashboardRedirect));  
-
+     authDashboardRedirect = 'dashboard'; // used when user try to access authLoginRedirect route
+ 
+ Router.beforeEach(RouteShielding(authLoginRedirect, authDashboardRedirect));
+ 
  export default Router;
 </code></pre>
 <p>and in your routes you need simply add a meta { guarded: true }, eg.:</p>
@@ -64,21 +62,18 @@
 		component: require('./components/Welcome.vue'),  
 		meta: { guarded: false }
 	},  
-  
 	{  
 		path: '/dashboard',  
 		name: 'dashboard',  
 		component: require('./components/Dashboard.vue'),  
 		meta: { guarded: true }
 	},  
-  
 	{  
 		path: '/some-unauthorised-place',  
 		name: 'foo',  
 		component: require('./components/Foo.vue'),  
 		meta: { guarded: false }  
 	},  
-  
 	{  
 		path: '/auth',  
 		component: require('./components/auth/Auth.vue'),  
