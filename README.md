@@ -26,9 +26,9 @@
 <h2 id="usage">Usage</h2>
 <p>For simple use import this module and use in store/index.js</p>
 <p>Enhancements with vuex-persistedstate, vue-router and so on…</p>
-<pre><code>import Vue from 'vue' import Vuex from 'vuex'
+<pre><code>import Vue from 'vue'
+import Vuex from 'vuex'
 import auth from 'vuex-passport'
-
 Vue.use(Vuex);
 const store = new Vuex.Store({ 
 	modules: { 
