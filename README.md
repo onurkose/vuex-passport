@@ -2,7 +2,7 @@
 
 For simple use import this module and use in store/index.js
 
-Enhancements with vuex-persistedstate and so on.
+Enhancements with vuex-persistedstate, vue-router and so on.
 
 ```
   import Vue from 'vue'
