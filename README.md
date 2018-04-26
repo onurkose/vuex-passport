@@ -26,18 +26,16 @@
 <h2 id="usage">Usage</h2>
 <p>For simple use import this module and use in store/index.js</p>
 <p>Enhancements with vuex-persistedstate, vue-router and so on…</p>
-<pre><code> import Vue from 'vue' import Vuex from 'vuex'  
- import auth from 'vuex-passport'  
+<pre><code>import Vue from 'vue' import Vuex from 'vuex'
+import auth from 'vuex-passport'
 
- Vue.use(Vuex);
- 
- const store = new Vuex.Store({ 
-	 modules: { 
-		 auth
-	 }
- });
- 
- export default store;
+Vue.use(Vuex);
+const store = new Vuex.Store({ 
+	modules: { 
+		auth
+	}
+});
+export default store;
 </code></pre>
 <h2 id="route-interceptor">Route interceptor</h2>
 <p>if you need intercept guarded routes you can import a RouteShielding, eg.:</p>
@@ -48,9 +46,8 @@
  const Router = new VueRouter({ routes });
  const authLoginRedirect = 'oauth/token', // used when user try to access a guarded route
      authDashboardRedirect = 'dashboard'; // used when user try to access authLoginRedirect route
- 
+     
  Router.beforeEach(RouteShielding(authLoginRedirect, authDashboardRedirect));
- 
  export default Router;
 </code></pre>
 <p>and in your routes you need simply add a meta { guarded: true }, eg.:</p>
