@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/Vandcarlos/vuex-passport/issues"
   },
-  "homepage": "https://github.com/Vandcarlos/vuex-passport#readme"
+  "homepage": "https://github.com/Vandcarlos/vuex-passport#readme",
+  "dependencies": {
+    "axios": "^0.18",
+    "vue": "^2.5.7",
+    "vue-axios": "^2.1.1",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.2"
+  }
 }

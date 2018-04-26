@@ -32,12 +32,16 @@ if you need intercept guarded routes you can import a RouteShielding, eg.:
 
   import routes from './routes'
 
-  Vue.use(VueRouter)
+  Vue.use(VueRouter);
+
   const Router = new VueRouter({
     routes
-  })
+  });
 
-  Router.beforeEach(RouteShielding())
+  const authLoginRedirect = 'oauth/token', // used when user try to access a guarded route
+    authDashboardRedirect = 'dashboard'; // used when user try to access authLoginRedirect route
+
+  Router.beforeEach(RouteShielding(authLoginRedirect, authDashboardRedirect));
 
   export default Router
 ```
@@ -87,9 +91,9 @@ export default [
   }
 ]
 ```
-note: you will can add meta tag in parent or children
+Note: You will can add meta tag in parent or children
 
-finnaly if you need change the default login page for redirect or the index page if user access login page when has section you can call a RouteShielding with the names for these pages
+Finally if you need change the default login page for redirect or the index page if user access login page when has section you can call a RouteShielding with the names for these pages
 
 ```
 Router.beforeEach(RouteShielding('foo-login', 'bar-index'))
