@@ -56,8 +56,52 @@
  export default Router;
 </code></pre>
 <p>and in your routes you need simply add a meta { guarded: true }, eg.:</p>
-<pre><code>export default [  
- { path: '/login', name: 'login', component: () =&gt; import('pages/login') }, { path: '/', component: () =&gt; import('layouts/default'), meta: { guarded: true }, children: [ { path: '', name: 'index', component: () =&gt; import('pages/index') }, { path: '/event-days', name: 'event-days', component: () =&gt; import('pages/event-days') } ] }, { path: '/reports', component: () =&gt; import('layouts/report'), children: [ { path: '/reports/simple', name: 'simple-report', component: () =&gt; import('pages/simple-report') }, { path: '/reports/advanced', name: 'advanced-report', component: () =&gt; import('pages/advanced-report'), meta: { guarded: true } } ] }]  
+<pre><code>const Router = new Router({  
+	routes: [  
+	{  
+		path: '/welcome',
+		redirect: { name: 'welcome' },
+		component: require('./components/Welcome.vue'),  
+		meta: { guarded: false }
+	},  
+  
+	{  
+		path: '/dashboard',  
+		name: 'dashboard',  
+		component: require('./components/Dashboard.vue'),  
+		meta: { guarded: true }
+	},  
+  
+	{  
+		path: '/some-unauthorised-place',  
+		name: 'foo',  
+		component: require('./components/Foo.vue'),  
+		meta: { guarded: false }  
+	},  
+  
+	{  
+		path: '/auth',  
+		component: require('./components/auth/Auth.vue'),  
+		meta: { guarded: false },  
+		name: 'auth',  
+		children: [  
+			{  
+				path: 'login',  
+				component: require('./components/auth/Login.vue'),  
+				meta: { guarded: false },  
+			},  
+			{  
+				path: 'register',  
+				component: require('./components/auth/Register.vue'),  
+				meta: { guarded: false },  
+			},  
+			{  
+				path: 'reset',  
+				component: require('./components/auth/PasswordReset.vue'),  
+				meta: { guarded: false },  
+			}]  
+	}]
+});
 </code></pre>
 <p>Note: You will can add meta tag in parent or children</p>
 <p>Finally if you need change the default login page for redirect or the index page if user access login page when has section you can call a RouteShielding with the names for these pages</p>
