@@ -1,6 +1,6 @@
 {
   "name": "vuex-passport",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Vuex module for using Laravel Passport",
   "main": "index.js",
   "scripts": {
